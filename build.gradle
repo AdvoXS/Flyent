@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'com.firefly.flyent'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+    maven { url "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/" }
+}
+
+dependencies {
+    compile 'com.github.JetBrains:ttorrent-lib:ttorrent-1.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
