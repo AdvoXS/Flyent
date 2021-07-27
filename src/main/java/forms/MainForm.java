@@ -1,5 +1,8 @@
 package forms;
 
+import com.turn.ttorrent.client.SimpleClient;
+import torrent.Torrent;
+import utils.TorrentUtils;
 import utils.form.GUIUtils;
 import utils.xml.XmlMenuCreator;
 import utils.xml.XmlReader;
@@ -7,8 +10,8 @@ import utils.xml.XmlReader;
 import javax.swing.*;
 import java.awt.Dimension;
 import java.io.File;
+import java.io.IOException;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.List;
 
 public class MainForm extends JFrame {
@@ -17,6 +20,7 @@ public class MainForm extends JFrame {
   private JPanel toolsPanel;
   private JPanel tableViewPanel;
   private JPanel menuPanel;
+  private JTable torrentTable;
 
   public MainForm() {
     pack();
@@ -47,15 +51,8 @@ public class MainForm extends JFrame {
       setJMenuBar(menuCreator.getMenuBar("mainMenu"));
       menuCreator.addActionListener("exit", e -> System.exit(0));
       menuCreator.addActionListener("open", e -> {
-        try {
-          List<File> files = GUIUtils.getChooseFiles(this, "Torrent files", "torrent");
-          InetAddress address = InetAddress.getLocalHost();
-          //SimpleClient client = Torrent.CLIENT.client();
-
-        } catch (UnknownHostException unknownHostException) {
-          unknownHostException.printStackTrace();
-        }
-
+        List<File> files = GUIUtils.getChooseFiles(this, "Torrent files", "torrent");
+        TorrentUtils.startDownload(files);
       });
     } catch (Exception e) {
       e.printStackTrace();
