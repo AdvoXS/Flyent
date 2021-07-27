@@ -1,4 +1,4 @@
-package utils;
+package utils.xml;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * from http://java-online.ru/swing-menu.xhtml
  */
-public class XMLMenuParser extends DefaultHandler {
+public class XmlMenuParser extends DefaultHandler {
   private JMenuBar currentMenuBar; // текущая строка меню
   // хранилище для всех частей системы меню
   private Map<String, Object> menuStorage = new HashMap<String, Object>();
