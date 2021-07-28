@@ -13,6 +13,6 @@ public enum Torrent {
   }
 
   public TorrentClient client(){
-    return client();
+    return client;
   }
 }

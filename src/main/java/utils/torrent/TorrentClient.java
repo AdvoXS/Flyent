@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TorrentClient {
   private static final int DEFAULT_EXECUTOR_SIZE = 10;
-  private final CommunicationManager communicationManager;
+  public final CommunicationManager communicationManager;
 
   public TorrentClient() {
     this(10, 10);
