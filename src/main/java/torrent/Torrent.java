@@ -1,18 +1,17 @@
 package torrent;
 
-import com.turn.ttorrent.client.SimpleClient;
 import utils.torrent.TorrentClient;
 
 public enum Torrent {
-  CLIENT(new TorrentClient());
+  INSTANCE(new TorrentClient());
 
-  TorrentClient client;
+  private final TorrentClient client;
 
-  Torrent(TorrentClient client){
+  Torrent(TorrentClient client) {
     this.client = client;
   }
 
-  public TorrentClient client(){
+  public TorrentClient get() {
     return client;
   }
 }

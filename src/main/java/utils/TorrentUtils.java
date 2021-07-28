@@ -10,7 +10,7 @@ import java.net.InetAddress;
 import java.util.List;
 
 public class TorrentUtils {
-  private static final TorrentClient client = Torrent.CLIENT.client();
+  public static final TorrentClient client = Torrent.INSTANCE.get();
 
   public static TorrentManager addTorrents(List<File> files, String downloadPath) {
     for (File file : files) {
