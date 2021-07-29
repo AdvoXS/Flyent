@@ -23,4 +23,12 @@ public class GUIUtils {
     }
     return selectedFiles;
   }
+
+  public static void showErrorDialog(String header, String message){
+    JOptionPane.showMessageDialog(null, message, header, JOptionPane.ERROR_MESSAGE);
+  }
+
+  public static void showMessageDialog(String header, String message){
+    JOptionPane.showMessageDialog(null, message, header, JOptionPane.INFORMATION_MESSAGE);
+  }
 }
