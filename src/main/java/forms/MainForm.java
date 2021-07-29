@@ -1,18 +1,21 @@
 package forms;
 
-import utils.TorrentUtils;
+import com.turn.ttorrent.client.LoadedTorrent;
+import com.turn.ttorrent.client.SharedTorrent;
 import utils.form.GUIUtils;
+import torrent.TorrentListener;
 import utils.xml.XmlMenuCreator;
 import utils.xml.XmlReader;
 
 import javax.swing.*;
 import java.awt.Dimension;
 import java.io.File;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.List;
+import java.util.logging.Logger;
 
-public class MainForm extends JFrame {
+public class MainForm extends JFrame implements TorrentListener {
+  Logger logger = Logger.getLogger(MainForm.class.getName());
+
   private JPanel mainBackPanel;
   private JPanel leftSidePanel;
   private JPanel toolsPanel;
@@ -51,17 +54,14 @@ public class MainForm extends JFrame {
       menuCreator.addActionListener("open", e -> {
         List<File> files = GUIUtils.getChooseFiles(this, "Torrent files", "torrent");
         String testDownPath = System.getProperty("user.home") + "/torrents/ling";
-        TorrentUtils.addTorrents(files, testDownPath);
-        try {
-          TorrentUtils.startDownload(InetAddress.getLocalHost());
-        } catch (UnknownHostException unknownHostException) {
-          unknownHostException.printStackTrace();
-        }
-        //TorrentUtils.startDownload(files);
-
       });
     } catch (Exception e) {
       e.printStackTrace();
     }
+  }
+
+  @Override
+  public void updateInfo(List<LoadedTorrent> loadedTorrents, List<SharedTorrent> sharedTorrents) {
+    //logger.info("Updated torrents in main form!");
   }
 }

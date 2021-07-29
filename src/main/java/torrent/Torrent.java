@@ -1,7 +1,5 @@
 package torrent;
 
-import utils.torrent.TorrentClient;
-
 public enum Torrent {
   INSTANCE(new TorrentClient());
 

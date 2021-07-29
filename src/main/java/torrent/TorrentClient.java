@@ -1,4 +1,4 @@
-package utils.torrent;
+package torrent;
 
 import com.turn.ttorrent.client.CommunicationManager;
 import com.turn.ttorrent.client.TorrentListener;
