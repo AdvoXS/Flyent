@@ -73,16 +73,25 @@ public class TorrentManager {
   }
 
   public TorrentManagerState getState() {
-    rwl.readLock().lock();
-    TorrentManagerState state = this.state;
-    rwl.readLock().unlock();
+    TorrentManagerState state;
+    try {
+      rwl.readLock().lock();
+      state = this.state;
+    }
+    finally {
+      rwl.readLock().unlock();
+    }
     return state;
   }
 
   public void setState(TorrentManagerState state) {
-    rwl.writeLock().lock();
-    this.state = state;
-    rwl.writeLock().unlock();
+    try {
+      rwl.writeLock().lock();
+      this.state = state;
+    }
+    finally {
+      rwl.writeLock().unlock();
+    }
   }
 }
 
